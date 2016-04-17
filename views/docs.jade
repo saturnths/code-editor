@@ -1,0 +1,43 @@
+extends layout
+
+block menuitem
+  -var page = 'Documents';
+
+block usern
+  -var uname = username
+
+block content
+  .page-header
+    h1 Documents
+  if locals.docs.length
+    p.lead Your documents:
+      each doc, i in docs
+        if (i % 4 == 0)
+          .row
+            each d, j in docs.slice(i, i+4)
+              .col-md-3
+                .document.text-center
+                  .row
+                    a.btn.btn-xs.btn-default(href="/editor/#{docs[i+j]._id}")
+                      span.glyphicon.glyphicon-pencil
+                    a.btn.btn-xs.btn-default(href="/share/#{docs[i+j]._id}")
+                      span.glyphicon.glyphicon-share
+                  .icon
+                  strong= docs[i+j].title
+                  .row
+                    | #{moment(docs[i+j].date).format('MMM D YYYY')}
+  if locals.shared.length
+    p.lead Shared with you:
+    each doc, i in shared
+      if (i % 4 == 0)
+        .row
+          each d, j in shared.slice(i, i+4)
+            .col-md-3
+              .document.text-center
+                .row
+                  a.btn.btn-xs.btn-default(href="/editor/#{shared[i+j]._id}")
+                    span.glyphicon.glyphicon-pencil
+                .icon
+                strong= shared[i+j].title
+                .row
+                  | #{moment(shared[i+j].date).format('MMM D YYYY')}

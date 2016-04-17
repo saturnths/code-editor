@@ -1,0 +1,14 @@
+extends layout
+
+block usern
+  if locals.username
+    -var uname = username
+  else
+    -var uname = ''
+
+block content
+  .jumbotron
+    .container
+      h1 Code Editor
+      if (username)
+        p Welcome, #{username}

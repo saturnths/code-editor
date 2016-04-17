@@ -1,0 +1,59 @@
+doctype html
+html
+  block menuitem
+    -var page = 'Home'
+  -var menu = {'New': '/new', 'Documents': '/docs', 'Edit': '#'}
+  block usern
+    -var uname = ''
+  head
+    block title
+      title Code Editor
+    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet', media='screen')
+    link(href='../stylesheets/editor.css', rel='stylesheet', media='screen')
+    link(href='../stylesheets/documents.css', rel='stylesheet', media='screen')
+    link(href='../stylesheets/style.css', rel='stylesheet', media='screen')
+
+  body
+    #main.container
+      nav.navbar.navbar-default
+        .container-fluid
+          .navbar-header
+            a.navbar-brand(href="/")
+              |Code Editor
+          .collapse.navbar-collapse
+            ul.nav.navbar-nav
+              each val, key in menu
+                if (page === key)
+                  li.active
+                    a(href='#{val}') #{key}
+                else
+                  if (key !== 'Edit')
+                    li
+                      a(href='#{val}') #{key}
+            ul.nav.navbar-nav.navbar-right
+              if (uname && uname !== '')
+                li
+                  a(href="/logout") Logout
+              else
+                li
+                  a(href="/login") Login
+                li
+                  a(href="/signup") Sign up
+      block content
+
+  script(src='https://code.jquery.com/jquery-2.2.0.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+
+  if page === 'Edit'
+    script(src='../ace/ace.js')
+    script(src='../ace-old/ext-modelist.js')
+    script(src='../ace/mode-coffee.js')
+    script(src='../ace/mode-javascript.js')
+    script(src='../ace/mode-java.js')
+    script(src='../ace/mode-php.js')
+    script(src='../ace/theme-idle_fingers.js')
+    script(src='../ace/theme-textmate.js')
+    script(src='../javascripts/share/share-0.7.x.js')
+    script(src='../channel/bcsocket.js')
+    script(src='../share-ace.js')
+    script(src='../javascripts/editor.js')

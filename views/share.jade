@@ -1,0 +1,15 @@
+extends layout
+
+block usern
+  -var uname = username
+
+block content
+  .page-header
+    h1 Share '#{doc.title}'
+  form.form-group(name="create", action="/share-with", method="post")
+    p Enter email address of the person you want to share the document with:
+    .input-group
+      input.form-control(type="text", name="email")
+      input(type="hidden", name="doc_id" value="#{doc._id}")
+      span.input-group-btn
+        button.btn.btn-primary Share

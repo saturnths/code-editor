@@ -1,0 +1,31 @@
+extends layout
+
+block menuitem
+  -var page = 'Edit';
+
+block usern
+  -var uname = username
+
+block content
+  h1 #{title}
+  p Created: #{moment(date).format('MMMM Do YYYY')}
+  if isOwner && collaborators.length > 0
+    div
+      p Shared with: #{collaborators.join(', ')}
+  else if !isOwner
+    div
+      p Owner: #{owner}
+  b#docname
+  form.form-inline
+    .form-group
+      label(for='language') Language
+      select#language.form-control(name='language')
+        option(value='JavaScript') JavaScript
+        option(value='Java') Java
+        option(value='PHP') PHP
+    .form-group.pull-right
+      label(for='theme') Theme
+      select#theme.form-control(name='theme')
+        option(value='Dark') Dark
+        option(value='Light') Light
+  div#editor

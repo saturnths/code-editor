@@ -1,0 +1,45 @@
+.document {
+  padding: 1em;
+  margin: 1em;
+}
+
+.document a.btn {
+  display: inline-block;
+  width: 25px;
+  margin: auto;
+  margin-top: 2px;
+  border: 0;
+  opacity: 0.7;
+}
+
+.document a.btn:hover {
+  opacity: 1;
+}
+
+.icon {
+  width: 50px;
+  height: 60px;
+  border: 2px solid #eee;
+  background-color: #eee;
+  background: linear-gradient(#E2E2E2, #F5F0F0, #CAC6C2);
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+  margin: auto;
+  border-radius: 5px;
+}
+
+.icon:after {
+  content: "Code";
+  position: relative;
+  top: 12px;
+  left: -2px;
+  color: #000;
+  opacity: 0.3;
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  -webkit-transform: rotate(-50deg);
+  -moz-transform: rotate(-50deg);
+  -o-transform: rotate(-50deg);
+  -ms-transform: rotate(-50deg);
+  transform: rotate(-50deg);
+}
