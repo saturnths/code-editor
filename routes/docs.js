@@ -39,8 +39,7 @@ module.exports = (function() {
       if(err) console.log(err);
       else  {
         console.log(doc);
-        doc_id = doc._id;
-        res.redirect('/editor/' + doc_id);
+        res.redirect('/editor/' + doc._id);
       }
     });
   });
